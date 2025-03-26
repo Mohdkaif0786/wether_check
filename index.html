@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="search">
+            <input type="text" placeholder="Enter City Name" id="input">
+            <div class="search-btn"><i class="bi bi-search"></i></div>
+        </div>
+        <img src="img/cloud.svg" id="clouds-img" alt="">
+        <h3><span id="celcius">0</span>°C</h3>
+        <h3 id="city"></h3>
+        <div class="wind-humidy-wraper">
+            <div class="humidy-warper">
+                <img src="img/humidy.png" alt="" id="humidity-img">
+                <div class="humidiy-desc">
+                    <p><span id="humidy">0</span>%</p>
+                    <h4>Humidity</h4>
+                </div>
+            </div>
+            <div class="wind-wraper">
+                <img src="img/wind.png" alt="" id="wind-img">
+                <div class="wind-desc">
+                    <p><span id="wind">0</span>Km/h</p>
+                    <h4>Wind</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cels = document.querySelector("#celcius");
+        let city = document.querySelector("#city");
+        let cloudImg = document.querySelector("#clouds-img");
+        let humidy = document.querySelector("#humidy");
+        let wind = document.querySelector("#wind");
+        let serch_btn = document.querySelector(".search-btn");
+        console.log(serch_btn)
+
+        async function Weather() {
+            let cityName = document.querySelector("#input").value;
+            let data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=fd5aafbb1f88083a2847c6225e5defc5&units=metric`).then(data => data.json());
+            console.log(data)
+            if (data.cod == '404' || cityName == "") {
+                alert(data.message)
+            }
+            else {
+                cels.innerHTML = Math.round(data.main.temp);
+                city.innerHTML = data.name;
+                humidy.innerHTML = Math.round(data.main.humidity);
+                wind.innerHTML = data.wind.speed;
+
+                if (data.weather[0].main == "Rain") {
+                    cloudImg.setAttribute("src", "img/rain.svg");
+                }
+                else if (data.weather[0].main == "Clear") {
+                    cloudImg.setAttribute("src", "img/clear.svg");
+                }
+                else if (data.weather[0].main == "Clouds") {
+                    cloudImg.setAttribute("src", "img/cloud.svg");
+                }
+            }
+
+        }
+        serch_btn.addEventListener("click", () => {
+            Weather();
+        })
+    </script>
+</body>
+
+</html>

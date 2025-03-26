@@ -1,0 +1,110 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800&family=Playfair+Display&family=Poppins:wght@100;200;300;400;500;600;700&family=Roboto:wght@300;400&display=swap');
+*{
+margin:0px;
+padding:0px;
+box-sizing: border-box;
+}
+.container{
+    width: 500px !important;
+    margin: 50px auto;
+    border: 1px solid green;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:20px 30px ;
+    background-image: linear-gradient(rgb(6, 6, 236),rgb(51, 51, 209),blue);
+}
+.search{
+    width:100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+}
+.search> input{
+    width:80%;
+    
+    border-radius: 23px;
+    border:1px solid transparent;
+    outline: none;
+    font-size: 16px;
+    padding:8px 20px;
+
+}
+.search> input::placeholder{
+    font-weight: 500;
+}
+
+.search-btn{
+    width:40px;
+    height:40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    font-weight: 800;
+    border-radius: 50%;
+    border: 1px solid transparent;
+}
+.container> h3{
+    font-size: 28px;
+    line-height: 30px;
+    margin: 0px;
+    margin-bottom: 6px;
+    color: white;
+}
+#clouds-img{
+    width:140px;
+    margin: 10px;
+    height:auto;
+}
+#celcius{
+    font-size: 36px;
+    font-weight: 500;
+    /* border: 1px solid red; */
+}
+.wind-humidy-wraper{
+    width: 90%;
+    margin-top: 40px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.humidy-warper,.wind-wraper{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 18px  !important;
+ width:fit-content !important; 
+ gap: 6px; 
+ /* border: 1px solid green;  */
+}
+.humidiy-desc,.wind-desc{
+    width:fit-content !important;
+    /* border: 1px solid red; */
+    margin: 0px;
+    color: rgb(228, 226, 226);
+}
+#humidity-img{
+    width:55px;
+    height:55px;
+    /* border: 1px solid red; */
+}
+.humidiy-desc>p,.wind-desc>p{
+    line-height: 30px;
+    margin: 0px;
+    font-size: 18px;
+}
+.humidiy-desc>h4,.wind-desc>h4{
+    font-weight: 600;
+    font-size: 18px  !important;
+    /* border: 1px solid red; */
+}
+#humidy,#wind{
+    font-size: 24px;
+}
